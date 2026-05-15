@@ -1,0 +1,82 @@
+version: "2"
+
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+
+linters:
+  default: standard
+  enable:
+    - bodyclose       
+    - misspell        
+    - revive          
+    - gocritic        
+    - unconvert       
+    - unparam         
+    - gosec           
+    - errorlint       
+    - nilerr          
+    - prealloc        
+    - copyloopvar     
+
+  settings:
+    revive:
+      severity: warning
+      rules:
+        - name: var-naming
+        - name: unused-parameter
+          disabled: true   
+
+    gocritic:
+      enabled-tags:
+        - diagnostic
+        - performance
+        - style
+      disabled-checks:
+        - ifElseChain    
+        - hugeParam      
+
+    gosec:
+      excludes:
+        - G404            
+        - G115            
+
+  exclusions:
+    generated: lax
+    paths:
+      - vendor
+      - web              
+      - migrations       
+    rules:
+      - path: _test\.go
+        linters:
+          - errcheck
+          - gosec
+          - prealloc
+      - path: cmd/server/main.go
+        linters:
+          - gocritic
+
+formatters:
+  enable:
+    - gci
+
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - prefix(github.com/yourname/warehouse-control)
+      custom-order: true
+      no-inline-comments: false
+      no-prefix-comments: false
+
+  exclusions:
+    paths:
+      - vendor
+      - web
+      - migrations
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0

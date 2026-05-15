@@ -1,0 +1,13 @@
+/bin/
+*.test
+*.out
+coverage.*
+
+/mygrep.pids
+
+.idea/
+.vscode/
+*.swp
+
+.DS_Store
+Thumbs.db
