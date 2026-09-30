@@ -13,6 +13,7 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
+//go:embed migrations/*.sql
 var migrationsFS embed.FS
 
 func Open(ctx context.Context, dsn string) (*pgxpool.Pool, error) {
