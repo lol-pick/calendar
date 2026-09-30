@@ -1,5 +1,7 @@
 # Calendar — HTTP-сервис календаря событий
 
+![CI](https://github.com/lol-pick/calendar/actions/workflows/ci.yml/badge.svg)
+
 HTTP API для управления событиями и напоминаниями. Написан на стандартной библиотеке Go (`net/http`) без сторонних фреймворков, данные хранятся в PostgreSQL.
 
 Фоновые механизмы:
